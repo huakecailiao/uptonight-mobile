@@ -25,7 +25,7 @@ jobs:
             build-essential git python3-pip python3-dev python3-setuptools \
             libffi-dev libssl-dev libjpeg-dev zlib1g-dev autoconf \
             automake libtool pkg-config cmake openjdk-17-jdk \
-            libcairo2-dev libgirepository1.0-dev
+            libcairo2-dev libgirepository1.0-dev autoconf-archive libtool-bin
 
       - name: Install Buildozer and Dependencies
         run: |
