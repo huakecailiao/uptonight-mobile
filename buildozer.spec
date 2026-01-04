@@ -3,6 +3,9 @@
 # (str) Title of your application
 title = UpTonight Mobile
 
+# (str) Package version
+version = 0.1
+
 # (str) Package name
 package.name = uptonight
 
