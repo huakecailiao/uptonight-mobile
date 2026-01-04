@@ -13,17 +13,31 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Build with Buildozer
-      - name: Build with Buildozer
-        uses: ArtemSBulgakov/buildozer-action@v1
-        id: buildozer
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          command: buildozer android debug
-          buildozer_version: master
+          python-version: '3.11'
 
-      # Upload artifacts
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential git python3-pip python3-dev python3-setuptools \
+            libffi-dev libssl-dev libjpeg-dev zlib1g-dev autoconf \
+            automake libtool pkg-config cmake openjdk-17-jdk
+
+      - name: Install Buildozer and Dependencies
+        run: |
+          pip install --upgrade pip
+          pip install --upgrade buildozer Cython==0.29.36
+          pip install https://github.com/kivymd/KivyMD/archive/master.zip
+
+      - name: Build with Buildozer
+        run: |
+          yes | buildozer android debug
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: package
-          path: ${{ steps.buildozer.outputs.filename }}
+          path: bin/*.apk
