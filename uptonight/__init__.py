@@ -1,0 +1,1 @@
+"""Constant Definitions for UpTonight."""

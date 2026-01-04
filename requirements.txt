@@ -1,0 +1,14 @@
+kivy[base]
+kivymd
+numpy
+astropy
+astroplan
+astroquery
+skyfield
+matplotlib
+pandas
+requests
+pillow
+PyYAML
+h5py
+paho-mqtt
